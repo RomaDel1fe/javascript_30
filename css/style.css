@@ -76,3 +76,39 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+.keys {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 20px;
+  background: #FFFFFF;
+}
+.key {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100px;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  background: #FFFFFF;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+.key kbd{
+  font-size: 24px;
+  font-weight: 500;
+}
+.playing{
+  border-color: #FFc600;
+  background: rgba(0, 0, 0, 0.1);
+}
+.sound {
+  font-family: sans-serif;
+  text-transform: uppercase;
+  color: #FFc600;
+}
