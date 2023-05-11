@@ -77,52 +77,34 @@ select {
   }
 }
 
-.container{
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+:root{
+  --base: #ffc600;
+  --spacing: 10px;
+  --blur: 10px;
 }
-.clock {
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-  border: 5px solid lightgray;
-  padding: 10px;
-  position: relative;
+body {
+  text-align: center;
+  background: #193549;
+  color: white;
+  font-family: 'helvetica neue', sans-serif;
+  font-weight: 100;
+  font-size: 50px;
 }
 
-.clock__face {
-  height: 100%;
-  width: 100%;
-  position: relative;
+.controls {
+  margin-bottom: 50px;
 }
-
-.hand {
-  width: 50%;
-  height: 3px;
-  position: absolute;
-  background: #000;
-  top: 50%;
-  transform-origin: right center; /* pivot point at the right center */
-  transform: rotate(90deg);
-  transition: all 0.3s ease;
-  right: 50%; /* adjust to align the hand correctly */
+.hl{
+  color: var(--base);
 }
-
-.hour__hand {
-  width: 30%; /* shorter hour hand */
+input {
+  width: 100px;
 }
-
-.min__hand {
-}
-
-.second__hand {
-  height: 1px;
-  background: red;
-  opacity: 0;
-}
-
-.second__hand.show{
-  opacity: 1;
+img{
+  display: inline-block;
+  text-align: center;
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur));
 }
