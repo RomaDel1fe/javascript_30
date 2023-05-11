@@ -1,17 +1,35 @@
+const secondHand = document.querySelector('.second__hand');
+const minHand = document.querySelector('.min__hand');
+const hourHand = document.querySelector('.hour__hand');
+const clock = document.querySelector('.clock');
 
-function playSound(e){
-  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-  if(!audio) return;
-  audio.currentTime = 0;
-  audio.play();
-  key.classList.add('playing');
+function setDate(){
+  const now = new Date();
+  const seconds = now.getSeconds();
+  const secondsDegrees = ((seconds / 60) * 360) + 90;
+  secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+  const mins = now.getMinutes();
+  const minsDegrees = ((mins / 60) * 360) + 90;
+  minHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+  const hours = now.getHours();
+  const hoursDegrees = ((hours / 12) * 360) + 90;
+  hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 }
-function removeTransition(e){
-  this.classList.remove('playing');
-}
 
-const keys = document.querySelectorAll('.key');
-keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+setInterval(setDate, 1000);
 
-window.addEventListener('keydown', playSound);
+clock.onmouseover = clock.onmouseout = function(event) {
+  if (event.type == 'mouseover') {
+    // If a timeout is already set, clear it
+    if (secondHand.timeout) clearTimeout(secondHand.timeout);
+    secondHand.classList.add('show');
+  }
+  if (event.type == 'mouseout') {
+    // Set a timeout to remove the class
+    secondHand.timeout = setTimeout(function() {
+      secondHand.classList.remove('show');
+    }, 5000); // Затримка в 500 мс (пів секунди)
+  }
+};
